@@ -1,0 +1,55 @@
+{% extends "dashboard/base.html" %}
+
+{% block  content %}
+
+    {% if jadwal.exists %}
+    <div class="row">
+        <div class="col-md-8">
+             <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Mata Pelajaran</th>
+                        <th>Kelas</th>
+                        <th>Hari</th>
+                        <th>Jam</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for jad in jadwal  %}
+                        <tr>
+                            <td>{{forloop.counter}}</td>
+                            <td>{{jad.mapel}}</td>
+                            <td>{{jad.kelas}}
+                            <td>{{jad.hari}}</td>
+                            <td>{{jad.jam}}</td>
+
+                        </tr>
+                        {% endfor  %}
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.table-responsive -->
+        </div>
+        </div>
+    </div>
+
+    {% else %}
+        <h1>Tidak Ada Jadwal Mengajar</h1>
+    {% endif %}
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,154 @@
+{% extends "dashboard/base.html" %}
+{% load crispy_forms_tags%}
+
+
+
+{% block  content %}
+<div class="row">
+	<div class="col-lg-11 ">
+		<div class="data_murid">
+				<div class="panel-body">
+					<div class="table-responsive">
+						<form method="get">
+							<div class="row">
+								<div class="form-group col-md-9">
+								{{my_filter.form.kelas|as_crispy_field}}
+							</div>
+							</div>
+							<div class="row">
+								<div class="form-group col-md-3">
+								{{my_filter.form.nis|as_crispy_field}}
+								</div>
+								<div class="form-group col-md-3">
+									{{my_filter.form.nisn|as_crispy_field}}
+								</div>
+								<div class="form-group col-md-3">
+									{{my_filter.form.nama|as_crispy_field}}
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group col-md-3">
+									<button type="submit" class="btn btn-info">Cari</button>
+								</div>
+							</div>
+						</form>
+						<table class="table">
+							<thead>
+							<tr>
+								<th>NO</th>
+								<th>NIS</th>
+								<th>NISN</th>
+								<th>NAMA</th>
+								<th>KELAS</th>
+								<th>TANGGAL LAHIR</th>
+								<th>JENIS KELAMIN</th>
+								<th>Action</th>
+
+							</tr>
+							</thead>
+							<tbody>
+							{% for siswa in murid  %}
+							<tr>
+								<td>{{ forloop.counter0|add:murid.start_index }}</td>
+								<td>{{siswa.nis}}</td>
+								<td>{{siswa.nisn}}</td>
+								<td>{{siswa.nama}}</td>
+								<td>{{siswa.kelas.kelas}}</td>
+								<td>{{siswa.tgl_lahir}}</td>
+								<td>{{siswa.jenis_kelamin}}</td>
+								<td><a href="{% url 'dashboard:detail-murid' siswa.id %}" class="btn btn-primary">Detail</a>
+									<a href="{% url 'dashboard:update-murid' siswa.id %}" class="btn btn-success">Edit</a>
+									<a href="{% url 'dashboard:hapus-murid' siswa.id %}" class="btn btn-danger hapus">Delete</a>
+								</td>
+
+							</tr>
+							{% endfor  %}
+							</tbody>
+						</table>
+						{% if murid.has_other_pages%}
+							<!--Pagination -->
+							{% with request.get_full_path as querystring %}
+							<ul class="pagination">
+	<!--							Previous Page Section-->
+								  {% if murid.has_previous%}
+									  {% if 'nama' or 'kelas' or 'nisn' or 'nis' in querystring %}
+											{% if 'page in querystring'  %}
+												<li class="page-item">
+												   <li><a href="{{ querystring|slice:':-7' }}&page={{ murid.previous_page_number }}">&laquo;</a></li>
+												</li>
+											{% else %}
+												<li class="page-item">
+												   <li><a href="{{querystring}}&page={{ murid.previous_page_number }}">&laquo;</a></li>
+												</li>
+											{% endif %}
+									  {% else %}
+										<li class="page-item">
+										   <li><a href="?page={{ murid.previous_page_number }}">&laquo;</a></li>
+										</li>
+									  {% endif %}
+
+								  {% else %}
+									<li class="disabled"><span>&laquo;</span></li>
+								  {% endif %}
+
+	<!--							All Page Section-->
+								  {% for i in murid.paginator.page_range  %}
+									{% if 'nama' or 'kelas' or 'nisn' or 'nis' in querystring%}
+										{% if 'page' in querystring%}
+											{% if murid.number == i  %}
+												<li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+											{% else %}
+												<li><a href="{{ querystring|slice:':-7' }}&page={{ i }}">{{ i }}</a></li>
+											{% endif %}
+										{% else %}
+											{% if murid.number == i  %}
+												<li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+											{% else %}
+												<li><a href="{{ querystring}}&page={{ i }}">{{ i }}</a></li>
+											{% endif %}
+										{% endif %}
+									{% else %}
+										{% if murid.number == i  %}
+											<li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+										{% else %}
+											<li><a href="?page={{ i }}">{{ i }}</a></li>
+										{% endif %}
+									{% endif %}
+								  {% endfor  %}
+
+	<!--							Next Page Section-->
+								  {% if murid.has_next %}
+									{% if 'nama' or 'kelas' or 'nisn' or 'nis' in querystring %}
+										{% if 'page' in querystring %}
+											<li><a href="{{ querystring|slice:":-7" }}&page={{ murid.next_page_number }}">&raquo;</a></li>
+										{% else %}
+											<li><a href="{{ querystring}}&page={{ murid.next_page_number }}">&raquo;</a></li>
+										{% endif %}
+									{% else %}
+										<li><a href="?page={{ murid.next_page_number }}">&raquo;</a></li>
+									{% endif %}
+								  {% else %}
+									<li class="disabled"><span>&raquo;</span></li>
+								  {% endif %}
+							  </ul>
+							{% endwith %}
+						<!--end Pagination-->
+						{% endif %}
+
+					</div>
+					<!-- /.table-responsive -->
+				</div>
+			</div>
+	</div>
+</div>
+
+{% endblock content %}
+
+{% block  extrajs %}
+<script>
+	$('.hapus').click(function(){
+		return confirm('Apakah Anda Yakin ?');
+	});
+</script>
+
+{% endblock extrajs %}

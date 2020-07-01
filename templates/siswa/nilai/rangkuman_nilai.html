@@ -1,0 +1,68 @@
+{% extends "dashboard/base.html" %}
+
+
+{% block  content %}
+
+
+        <div class="panel">
+            <div class="panel-heading">
+                <h1 class="page-header">Rangkuman Nilai</h1>
+            </div>
+            <!-- /.panel-heading -->
+            <div class="row">
+                <div class="col-md-8">
+                    
+                    <div class="panel-body">
+                        <button class="btn btn-outline btn-primary btn-sm">Cetak Rapot</button>
+                        <div class="table-responsive table-bordered">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>No</th>
+                                        <th>Mata Pelajaran</th>
+                                        <th>TUGAS</th>
+                                        <th>UTS</th>
+                                        <th>UAS</th>
+                                        <th>Predikat</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                {% for siswa in data_siswa  %}
+                                        <tr>
+                                            <td>{{forloop.counter}}</td>
+                                            <td>{{siswa.mapel}}</td>
+                                            <td>{{siswa.tugas}}</td>
+                                            <td>{{siswa.uts}}</td>
+                                            <td>{{siswa.uas}}</td>
+                                            
+                                            {% if siswa.predikat %}
+                                            <td>{{siswa.predikat}}</td>
+                                            {% else %}
+                                            <td>tidak ada</td>    
+                                            {% endif %}
+                                                
+                                            
+                                        </tr>
+                                {% endfor  %}
+
+                                </tbody>
+                            </table>
+                        </div>
+                    <!-- /.table-responsive -->
+                    </div>
+                </div>
+            </div>
+            <!-- /.panel-body -->
+        </div>
+
+
+
+{% endblock content %}
+
+
+
+
+
+
+

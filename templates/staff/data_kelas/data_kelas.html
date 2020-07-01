@@ -1,0 +1,138 @@
+{% extends "dashboard/base.html" %}
+{% load crispy_forms_tags%}
+{% block  content %}
+
+<div class="row">
+    <div class="col-lg-11">
+        <div class="panel-body">
+                <div class="table-responsive">
+                    <form method="get">
+							</div>
+							<div class="row">
+								<div class="form-group col-md-3">
+								{{my_filter.form.kelas|as_crispy_field}}
+								</div>
+								<div class="form-group col-md-3">
+									{{my_filter.form.jurusan|as_crispy_field}}
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group col-md-3">
+									<button type="submit" class="btn btn-info">Cari</button>
+								</div>
+							</div>
+						</form>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Ruang</th>
+                                <th>Kelas</th>
+                                <th>Jurusan</th>
+                                <th>Wali Kelas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                        {% for kl in kelas  %}
+                        	<tr>
+                                <td>{{ forloop.counter0|add:kelas.start_index }}</td>
+                                <td>{{kl.ruang}}</td>
+                                <td>{{kl.kelas}}</td>
+                                <td>{{kl.jurusan}}</td>
+                                <td>{{kl.wali_kelas}}</td>
+                                <td><a class="btn btn-primary" href="{% url 'dashboard:update-kelas' kl.id %}" style="margin-right:10px;">Edit</a>
+                                    <a class="btn btn-danger hapus" href="{% url 'dashboard:hapus-kelas' kl.id %}" >Hapus</a>
+                                </td>
+                            </tr>
+                        {% endfor  %}
+
+                        </tbody>
+                    </table>
+                    
+                    {% if kelas.has_other_pages%}
+							<!--Pagination -->
+							{% with request.get_full_path as querystring %}
+							<ul class="pagination">
+	<!--							Previous Page Section-->
+								  {% if kelas.has_previous%}
+									  {% if 'kelas' or 'jurusan' in querystring %}
+											{% if 'page in querystring'  %}
+												<li class="page-item">
+												   <li><a href="{{ querystring|slice:':-7' }}&page={{ kelas.previous_page_number }}">&laquo;</a></li>
+												</li>
+											{% else %}
+												<li class="page-item">
+												   <li><a href="{{querystring}}&page={{ kelas.previous_page_number }}">&laquo;</a></li>
+												</li>
+											{% endif %}
+									  {% else %}
+										<li class="page-item">
+										   <li><a href="?page={{ kelas.previous_page_number }}">&laquo;</a></li>
+										</li>
+									  {% endif %}
+
+								  {% else %}
+									<li class="disabled"><span>&laquo;</span></li>
+								  {% endif %}
+
+	<!--							All Page Section-->
+								  {% for i in kelas.paginator.page_range  %}
+									{% if 'kelas' or 'jurusan' in querystring%}
+										{% if 'page' in querystring%}
+											{% if kelas.number == i  %}
+												<li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+											{% else %}
+												<li><a href="{{ querystring|slice:':-7' }}&page={{ i }}">{{ i }}</a></li>
+											{% endif %}
+										{% else %}
+											{% if kelas.number == i  %}
+												<li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+											{% else %}
+												<li><a href="{{ querystring}}&page={{ i }}">{{ i }}</a></li>
+											{% endif %}
+										{% endif %}
+									{% else %}
+										{% if kelas.number == i  %}
+											<li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+										{% else %}
+											<li><a href="?page={{ i }}">{{ i }}</a></li>
+										{% endif %}
+									{% endif %}
+								  {% endfor  %}
+
+	<!--							Next Page Section-->
+								  {% if kelas.has_next %}
+									{% if 'kelas' or 'jurusan'  in querystring %}
+										{% if 'page' in querystring %} 
+											<li><a href="{{ querystring|slice:":-7" }}&page={{ kelas.next_page_number }}">&raquo;</a></li>
+										{% else %}
+											<li><a href="{{ querystring}}&page={{ kelas.next_page_number }}">&raquo;</a></li>
+										{% endif %}
+									{% else %}
+										<li><a href="?page={{ kelas.next_page_number }}">&raquo;</a></li>
+									{% endif %}
+								  {% else %}
+									<li class="disabled"><span>&raquo;</span></li>
+								  {% endif %}
+							  </ul>
+							{% endwith %}
+						<!--end Pagination-->
+						{% endif %}
+                    	
+
+
+                </div>
+                <!-- /.table-responsive -->
+            </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block  extrajs %}
+	<script>
+      $('.hapus').click(function(){
+        return confirm('Apakah Anda Yakin ?');
+      });
+    </script>
+{% endblock extrajs %}

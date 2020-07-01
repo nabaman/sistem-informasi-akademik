@@ -1,0 +1,63 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>SMK Merah Putih</title>
+
+    {% block  style_base %}
+    	{% include "snippets/style.html" %}
+    {% endblock style_base %}
+
+    {% block  custom_style %}
+
+    {% endblock custom_style %}
+
+
+
+</head>
+<body>
+
+    <section id="topbar">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-9">
+                        <ul class="top-contact">
+                            <li><a href=""><i class="fas fa-phone"></i>0896-5544-2693</a></li>
+                            <li><a href=""><i class="fas fa-envelope"></i>smk.merahputih@gmail.com</a></li>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <ul class="sosmed">
+
+                            {% if user.is_authenticated%}
+                            <li><a href="{% url 'dashboard:index' %}">Dashboard</a></li>
+                            {% endif %}
+                            <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
+                            <li><a href=""><i class="fab fa-instagram"></i></a></li>
+                            <li><a href=""><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="{% url 'dashboard:login' %}">Login</a></li>
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+{% block  content %}
+	
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+{% include 'snippets/script.html' %}
+</body>
+</html>

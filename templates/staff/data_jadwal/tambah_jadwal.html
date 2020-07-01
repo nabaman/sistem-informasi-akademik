@@ -1,0 +1,38 @@
+{% extends "dashboard/base.html" %}
+{% load crispy_forms_tags%}
+{% block  content %}
+
+<div class="col-lg-6">
+    <div class="row">
+        <form method="POST" id="Input_JadwalForm" data-kelas-url="{% url 'dashboard:load-mapel' %}">
+            {% csrf_token %}
+            {{form|crispy}}
+        <button type="submit" class="btn btn-primary">{{tombol}}</button>
+        </form>
+
+    </div>
+</div>
+
+
+{% endblock content %}
+
+{% block  extrajs %}
+<script>
+    $("#id_kelas").change(function() {
+        var url = $("#Input_JadwalForm").attr("data-kelas-url");
+        var kelasId = $(this).val();
+
+        $.ajax({
+            url: url,
+            data: {
+                'kelas':kelasId
+            },
+            success: function(data){
+                $("#id_mapel").html(data);
+            }
+        });
+    });
+
+
+</script>
+{% endblock extrajs %}

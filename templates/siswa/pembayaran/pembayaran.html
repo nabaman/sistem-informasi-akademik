@@ -1,0 +1,124 @@
+{% extends "dashboard/base.html" %}
+{% load humanize%}
+
+
+{% block  content %}
+<div class="row">
+	<div class="col-lg-6">
+		<div class="panel-body">
+            <h1>Pembayaran SPP</h1>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Bulan</th>
+                                <th>Keterangan</th>
+                                <th>Tagihan</th>
+                                <th>Status</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+						{% for bayar in pembayaran  %}
+								<tr>
+									<td>{{forloop.counter}}</td>
+									<td>{{bayar.bulan}}</td>
+                                    <td>{{bayar.jenis_pembayaran}}</td>
+                                    <td>Rp.{{bayar.jenis_pembayaran.tagihan|intcomma}}</td>
+									<td>{{bayar.status}}</td>
+								</tr>
+						{% endfor  %}
+
+
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+        </div>
+	</div>
+
+</div>
+
+<div class="row">
+	<div class="col-lg-6">
+		<div class="panel-body">
+            <h1>Pembayaran UTS</h1>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Keterangan</th>
+                                <th>Tagihan</th>
+                                <th>Status</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+						{% for bayar in bayar_uts  %}
+								<tr>
+									<td>{{forloop.counter}}</td>
+									<td>{{bayar.jenis_pembayaran}} {{bayar.tahun_ajaran}}</td>
+                                    <td>Rp.{{bayar.jenis_pembayaran.tagihan|intcomma}}</td>
+                                    <td>{{bayar.status}}</td>
+								</tr>
+						{% endfor  %}
+
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+        </div>
+	</div>
+    <div class="col-lg-6">
+
+		<div class="panel-body">
+                <h1>Pembayaran UAS</h1>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Keterangan</th>
+                                <th>Tagihan</th>
+                                <th>Status</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+
+
+                        {% for bayar in bayar_uas  %}
+								<tr>
+									<td>{{forloop.counter}}</td>
+									<td>{{bayar.jenis_pembayaran}} {{bayar.tahun_ajaran}}</td>
+                                    <td>Rp.{{bayar.jenis_pembayaran.tagihan|intcomma}}</td>
+                                    <td>{{bayar.status}}</td>
+								</tr>
+						{% endfor  %}
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+        </div>
+	</div>
+
+</div>
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+

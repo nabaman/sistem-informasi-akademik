@@ -1,0 +1,167 @@
+{% extends "dashboard/base.html" %}
+{% load crispy_forms_tags%}
+{% block  content %}
+
+<div class="container">
+
+    <h2 class="page-header">
+        Mata Pelajaran : {{nilai.0.mapel}} Tahun Ajaran {{nilai.0.tahun_ajaran.tahun}} Semester {{nilai.0.tahun_ajaran.semester}}
+    </h2>
+
+    {% if nilai.exists%}
+        <form method="post">
+            {% csrf_token %}
+           <div class="row">
+               <div class="col-lg-7">
+                   <div class="button">
+                       <button type="button" class="btn btn-outline btn-primary btn-lg btn-block" id="update_btn">Update Nilai
+                       <button class="btn btn-info btn-lg btn-block" id="save_all_btn" style="display:none;margin-top:0px">SAVE ALL</button>
+                   </div>
+
+                   <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama</th>
+                                    <th>Tugas</th>
+                                    <th>UTS</th>
+                                    <th>UAS</th>
+                                    <th>Keterampilan</th>
+                                    <th>Rata Rata</th>
+                                    <th>Predikat</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                               {% for i in nilai  %}
+                               <tr>
+                                   <td class="editable" data-type="id" style="display:none;">{{i.id}}</td>
+                                   <td>{{forloop.counter}}</td>
+                                   <td>{{i.siswa}}</td>
+                                   <td class="editable" data-type="tugas">{{i.tugas}}</td>
+                                   <td class="editable" data-type="uts">{{i.uts}}</td>
+                                   <td class="editable" data-type="uas">{{i.uas}}</td>
+                                   <td class="editable" data-type="keterampilan">{{i.keterampilan}}</td>
+                                   <td>{{i.total_nilai}}</td>
+                                   <td>{{i.predikat}}</td>
+                               </tr>
+                               {% endfor  %}
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- /.table-responsive -->
+                </div>
+               </div>
+           </div>
+
+        </form>
+    {% else %}
+
+    <h1>TIDAK ADA NILAI</h1>
+
+    {% endif %}
+
+
+</div>
+
+
+{% endblock content %}
+{% block  extrajs %}
+<script>
+    $("#update_btn").click(function(){
+            $("#update_btn").hide();
+            $("#save_all_btn").show();
+
+       $(".editable").each(function(){
+           var value=$(this).text();
+           var types=$(this).data('type');
+           var html_data="<input type='number' name='"+types+"' min='0' max='100' maxlength='3' class='form-control input_"+types+" input_data' value='"+value+"' >";
+           $(this).html(html_data);
+        });
+    });
+
+    window.onload = function () {
+        var textbox = document.getElementByClassName("editable");
+        var maxVal = 100;
+
+        addEvent(textbox, "keyup", function () {
+            var thisVal = +this.value;
+
+            this.className = this.className.replace(" input-error ", "");
+            if (isNaN(thisVal) || thisVal > maxVal) {
+                this.className += " input-error ";
+                // Invalid input
+            }
+        });
+    };
+
+    function addEvent(element, event, callback) {
+        if (element.addEventListener) {
+            element.addEventListener(event, callback, false);
+        } else if (element.attachEvent) {
+            element.attachEvent("on" + event, callback);
+        } else {
+            element["on" + event] = callback;
+        }
+    }
+
+     $("#save_all_btn").click(function(){
+        $("#save_all_btn").attr("disabled","disabled");
+        $("#save_all_btn").text("Saving Data....");
+
+
+        var json_data=[];
+        $(".input_data").each(function(){
+                var value=$(this).val();
+                var parent_html=$(this).parent();
+                parent_html.html(value);
+                $(this).remove();
+         });
+
+        $("tbody tr").each(function(){
+             var id=$(this).children().eq(0).text()
+             var tugas=$(this).children().eq(3).text()
+             var uts=$(this).children().eq(4).text()
+             var uas=$(this).children().eq(5).text()
+             var keterampilan = $(this).children().eq(6).text()
+             var single_data={"id":id,"tugas":tugas,"uts":uts,"uas":uas, "keterampilan":keterampilan};
+             json_data.push(single_data);
+        });
+
+        var string_data=JSON.stringify(json_data)
+        $.ajax({
+                url:'{% url 'dashboard:update_nilai' %}',
+                type:'POST',
+                data:{data:string_data}
+            })
+
+            .always(function(){
+                 $("#save_all_btn").removeAttr("disabled");
+                 $("#save_all_btn").text("SAVE ALL");
+                 $("#update_btn").show();
+                 $("#save_all_btn").hide();
+            })
+        location.reload();
+    });
+
+
+
+
+
+
+</script>
+{% endblock extrajs %}
+
+
+
+
+
+
+
+
+
+
+
+

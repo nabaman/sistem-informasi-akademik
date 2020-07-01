@@ -1,0 +1,84 @@
+{% extends "dashboard/base.html" %}
+
+
+{% block  content %}
+<div class="container">
+    {{data}}
+    <div class="row">
+        <div class="panel-heading">
+             <h1 class="page-header">Data Pribadi</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    Data Siswa
+                </div>
+                <div class="panel-body">
+                    <table style="width:100%">
+                      <tr>
+                        <td>Nama</td>
+                        <td>:   {{siswa.nama}}</td>
+                      </tr>
+                       <tr>
+                        <td>Kelas</td>
+                        <td>:   {{siswa.kelas.kelas}}</td>
+                      </tr>
+                       <tr>
+                        <td>Jurusan</td>
+                        <td>:   {{siswa.kelas.jurusan}}</td>
+                      </tr>
+                      <tr>
+                        <td>NIS</td>
+                        <td>:   {{siswa.nis}}</td>
+
+                      </tr>
+                      <tr>
+                        <td>NISN</td>
+                        <td>:   {{siswa.nisn}}</td>
+                      </tr>
+                      <tr>
+                        <td>Tanggal Lahir</td>
+                        <td>:   {{siswa.tgl_lahir}}</td>
+                      </tr>
+                      <tr>
+                        <td>Alamat</td>
+                        <td>:      {{siswa.alamat}}</td>
+                      </tr>
+                      <tr>
+                        <td>Jenis Kelamin</td>
+                        <td>:   {{siswa.jenis_kelamin}}</td>
+                      </tr>
+                      <tr>
+                        <td>Sekolah Sebelumnya</td>
+                        <td>:   {{siswa.sekolah_sebelumnya}}</td>
+                      </tr>
+                    </table>
+                </div>
+                <div class="panel-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

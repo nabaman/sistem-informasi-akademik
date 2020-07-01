@@ -1,0 +1,549 @@
+{% extends "base_landing.html" %}
+{% load static%}
+{% block  content %}
+	<header>
+       <div class="container">
+            <div class="brand">
+                <img src="{% static 'gambar/logo-sekolah.png' %}" alt="logo">
+                <div class="brand-name">
+                    <h1>SMK Merah Putih</h1>
+                    <h3>Berprestasi dan Terampil serta Berakhlak Mulia</h3>
+                </div>
+
+            </div>
+       </div>
+    </header>
+
+<!-- Section Navbar-->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-biru">
+      <div class="container">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#my-Nav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div  id="my-Nav" class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="#">Beranda<span class="sr-only">(current)</span></a>
+              </li>
+
+                <li class="nav-item dropdown">
+                  <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">Profil</a>
+                  <div class="dropdown-menu">
+                    <a href="" class="dropdown-item">Sejarah</a>
+                    <a href="" class="dropdown-item">Visi & Misi</a>
+                    <a href="" class="dropdown-item">Peta Sekolah</a>
+                  </div>
+                </li>
+
+                <li class="nav-item dropdown">
+                  <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">Sarana & Prasarana</a>
+                  <div class="dropdown-menu">
+                    <a href="" class="dropdown-item">Sarana Infrastruktur</a>
+                    <a href="" class="dropdown-item">Sarana Pembelajaran</a>
+
+                  </div>
+                </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Ekstrakurikuler</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Prestasi</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Berita</a>
+              </li>
+              <li class="nav-item dropdown">
+                  <a href="" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" role="button">Galeri</a>
+                  <div class="dropdown-menu">
+                    <a href="" class="dropdown-item">Foto</a>
+                    <a href="" class="dropdown-item">Video Dokumentasi</a>
+                  </div>
+                </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">Kontak</a>
+              </li>
+            </ul>
+          </div>
+      </div> <!-- end container-->
+    </nav>
+
+
+<!--Section Hero Area-->
+
+    <section id="hero-area">
+        <div id="slider-hero-nav"></div>
+          <div class="owl-carousel" id="slider-hero">
+              <div class="slider-item">
+                  <div class="slider-item-img">
+                      <img src="{% static 'gambar/tester-bg.jpg' %}" alt="hero-area-img">
+                  </div>
+                  <div class="slider-item-content">
+                      <h2>text</h2>
+                      <p>here</p>
+                      <button class="btn btn-primary hero-bg">Daftar Sekarang!</button>
+                  </div>
+              </div> {# slider item #}
+
+              <div class="slider-item">
+                  <div class="slider-item-img">
+                      <img src="{% static 'gambar/tester-2.jpg' %}" alt="hero-area-img">
+                  </div>
+                  <div class="slider-item-content">
+                      <h2>Title 2</h2>
+                      <p>Text disini</p>
+                      <button class="btn btn-primary hero-bg">tombol disini</button>
+                  </div>
+              </div> {# slider item #}
+          </div>
+    </section>
+
+    <section id="profil">
+      <div class="container">
+        <h2>PROFIL SMK MERAH PUTIH</h2>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="video-wrapper">
+                <iframe width="540" height="315" src="https://www.youtube.com/embed/hxSddfuYQ1k" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              </div>
+            </div>
+            <div class="col-md-6">
+                <h3>Tentang SMK Merah Putih</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore ducimus ipsum odit, incidunt placeat minus sequi tenetur possimus voluptatem commodi enim, corrupti quo nostrum quia eius doloribus aperiam impedit, libero. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illo possimus vero, at atque totam cum. Id, deserunt voluptatum ut debitis, explicabo sed amet dignissimos asperiores sequi magni quas quibusdam necessitatibus! <a class="btn btn-primary" href="">Selengkapnya..</a> </p>
+
+
+            </div>
+          </div>
+      </div>
+    </section> <!-- profil -->
+
+    <section id="prestasi">
+      <div class="container">
+        <div class="section-title">
+          <h2>PRESTASI </h2>
+        </div>
+        <div class="section-item">
+          <div class="row">
+            <div class="col-md-6">
+              <img class="section-item-thumbnail" src="{% static 'gambar/eskul/paskibra/paskibra-1.jpg' %}" alt="gambar-murid-prestasi">
+            </div>
+            <div class="col-md-6 col-item-kanan">
+              <div class="section-item-title">
+                <h3>Juara 3 Lomba Pembuatan Bom Nuklir</h3>
+                <div class="section-item-meta">
+                  <span><i class="far fa-calendar-alt"></i>18 Mei, 2020 - 23 Mei, 2020</span>
+                  <span><i class="fas fa-map-marked-alt"></i>Serpong, Tangerang Selatan</span>
+                </div>
+              </div>
+              <div class="section-item-body">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit quae voluptas natus dolorum eaque ipsa neque, facere quam totam non sunt consequuntur voluptates aut, voluptatem nam distinctio maxime adipisci dolorem.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section-item">
+          <div class="row">
+            <div class="col-md-6">
+              <img class="section-item-thumbnail" src="{% static 'gambar/eskul/futsal/futsal-1.jpg' %}" alt="gambar-murid-prestasi">
+            </div>
+            <div class="col-md-6">
+              <div class="section-item-title">
+                <h3>Juara 3 Lomba Pembuatan Bom Nuklir</h3>
+                <div class="section-item-meta">
+                  <span><i class="far fa-calendar-alt"></i>18 Mei, 2020 - 23 Mei, 2020</span>
+                  <span><i class="fas fa-map-marked-alt"></i>Serpong, Tangerang Selatan</span>
+                </div>
+              </div>
+              <div class="section-item-body">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit quae voluptas natus dolorum eaque ipsa neque, facere quam totam non sunt consequuntur voluptates aut, voluptatem nam distinctio maxime adipisci dolorem.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="section-item">
+          <div class="row">
+            <div class="col-md-6">
+              <img class="section-item-thumbnail" src="{% static 'gambar/eskul/seni tari/tari-1.jpg' %}" alt="gambar-murid-prestasi">
+            </div>
+            <div class="col-md-6">
+              <div class="section-item-title">
+                <h3>Juara 3 Lomba Pembuatan Bom Nuklir</h3>
+                <div class="section-item-meta">
+                  <span><i class="far fa-calendar-alt"></i>18 Mei, 2020 - 23 Mei, 2020</span>
+                  <span><i class="fas fa-map-marked-alt"></i>Serpong, Tangerang Selatan</span>
+                </div>
+              </div>
+              <div class="section-item-body">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit quae voluptas natus dolorum eaque ipsa neque, facere quam totam non sunt consequuntur voluptates aut, voluptatem nam distinctio maxime adipisci dolorem.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tombol-selengkapnya">
+          <a class="btn btn-more" href="">Lihat Lainnya</a>
+        </div>
+      </div>
+
+    </section>
+
+    <section id="ekstrakurikuler">
+      <div class="container">
+        <div class="section-title">
+          <h2>Ekstrakurikuler</h2>
+
+        </div>
+        <div class="section-body">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="section-body-item">
+                <div class="row row-2">
+                  <div class="col-md-4">
+                    <i class="fa fa-user"></i>
+                  </div>
+                  <div class="col-md-8">
+                    <h4>Pramuka</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="section-body-item">
+                <div class="row row-2">
+                  <div class="col-md-4">
+                    <i class="fa fa-user"></i>
+                  </div>
+                  <div class="col-md-8">
+                    <h4>Futsal</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="section-body-item">
+                <div class="row row-2">
+                  <div class="col-md-4">
+                    <i class="fa fa-user"></i>
+                  </div>
+                  <div class="col-md-8">
+                    <h4>Seni Tari</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="section-body-item">
+                <div class="row row-2">
+                  <div class="col-md-4">
+                    <i class="fa fa-user"></i>
+                  </div>
+                  <div class="col-md-8">
+                    <h4>Silat</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="section-body-item">
+                <div class="row row-2">
+                  <div class="col-md-4">
+                    <i class="fa fa-user"></i>
+                  </div>
+                  <div class="col-md-8">
+                    <h4>Renang</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="section-body-item">
+                <div class="row row-2">
+                  <div class="col-md-4">
+                    <i class="fa fa-user"></i>
+                  </div>
+                  <div class="col-md-8">
+                    <h4>Taekwondo</h4>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="tenaga-pendidik">
+      <div class="container">
+        <div class="section-title">
+          <h2>Tenaga Pendidik </h2>
+        </div>
+          <div class="section-body">
+             <div id="slider-tools-1"></div>
+            <div class="owl-carousel" id="tenaga-pendidik-slider">
+            <div class="section-item-slider">
+              <img class="foto-guru" src="{% static 'gambar/foto.png' %}" alt="">
+              <div class="section-item-caption">
+                <h5>Naba Ulviyan, S.MK., M.TS </h5>
+                <h6>Guru Bahasa Mesin</h6>
+              </div>
+            </div>
+            <div class="section-item-slider">
+              <img class="foto-guru" src="{% static 'gambar/murid-test.jpg' %}" alt="">
+              <div class="section-item-caption">
+                <h5>Bambang, S.MK., M.TS </h5>
+                <h6>Guru Bahasa Kalbu</h6>
+              </div>
+            </div>
+            <div class="section-item-slider">
+              <img class="foto-guru" src="{% static 'gambar/pengibaran bendera.jpg' %}" alt="">
+              <div class="section-item-caption">
+                <h5>Sutejo, S.MK., M.TS </h5>
+                <h6>Guru Bahasa Jiwa</h6>
+              </div>
+            </div>
+          </div>
+          </div>
+      </div>
+    </section>
+
+    <section id="alumni">
+      <div class="container">
+        <div class="section-title">
+          <h2>Profil Alumni</h2>
+        </div>
+        <div class="section-body">
+          <div id="slider-tools-2"></div>
+          <div class="owl-carousel" id="alumni-slider">
+            <div class="section-item-slider">
+              <div class="row">
+                <div class="col-md-5">
+                  <img class="foto-alumni" src="{%static 'gambar/renih.png'%}" alt="">
+                </div>
+                <div class="col-md-7">
+                  <div class="section-item-content">
+                    <a href=""><h3>Drs. Renih Kurniawatih, S.DO, G.er</h3></a>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi cum quae molestiae qui? Numquam ratione rem quos, neque quam explicabo vel nihil, quisquam et sapiente reprehenderit molestias unde.</p>
+                    <a href="" class="selengkapnya">Selengkapnya ... <i class="fas fa-arrow-right"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="section-item-slider">
+              <div class="row">
+                <div class="col-md-5">
+                  <img class="foto-alumni" src="{%static 'gambar/foto.png'%}" alt="">
+                </div>
+                <div class="col-md-7">
+                  <div class="section-item-content">
+                    <a href=""><h3>Prof. Naba Ulpiyan, S.Pda</h3></a>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi cum quae molestiae qui? Numquam ratione rem quos, neque quam explicabo vel nihil, quisquam et sapiente reprehenderit molestias unde.</p>
+                    <a href="" class="selengkapnya">Selengkapnya ... <i class="fas fa-arrow-right"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="galeri">
+      <div class="container">
+        <div class="section-title">
+          <h2>Galeri & Dokumentasi</h2>
+        </div>
+          <div class="section-body">
+             <div id="slider-tools-3"></div>
+              <div class="owl-carousel" id="galeri-slider">
+              <div class="section-item-slider">
+                <img class="foto-guru" src="{% static 'gambar/eskul/silat/silat-1.jpg' %}" alt="">
+                <div class="section-item-caption">
+                  <a href=""><h5>Kegiatan LDKS </h5></a>
+                  <h6>Vila Insani, Bogor</h6>
+                </div>
+              </div>
+              <div class="section-item-slider">
+                <img class="foto-guru" src="{% static 'gambar/gambar.jpg' %}" alt="">
+                <div class="section-item-caption">
+                  <a href=""><h5>Video Dokumentasi</h5></a>
+                  <h6>Gunung Bromo</h6>
+                </div>
+              </div>
+              <div class="section-item-slider">
+                <img class="foto-guru" src="{% static 'gambar/eskul/futsal/futsal-2.jpg' %}" alt="">
+                <div class="section-item-caption">
+                  <a href=""><h5>Video Dokumentasi</h5></a>
+                  <h6>Gunung Bromo</h6>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </section>
+
+    <section id="berita">
+      <div class="container">
+        <div class="section-title">
+          <h2>Berita Terbaru</h2>
+        </div>
+        <div class="section-body">
+          <div class="row">
+            <div class="col-md-4">
+              <div class="section-thumbnail">
+                <a href=""><img src="{%static 'gambar/gambar.jpg' %}" alt=""></a>
+                <div class="tanggal">
+                  <span class="tgl">25</span>
+                  <span class="bln">Feb,2020</span>
+                </div>
+              </div>
+              <div class="section-content">
+                <a href=""><h3>Siswa Teladan Berkurban Pada Idul Adha</h3></a>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sapiente labore aut laborum quis mollitia, voluptatum, placeat provident ratione, temporibus est consectetur maiores ipsa autem. Sunt est nobis ratione distinctio minima?<a href="" class="btn btn-primary kecil">Selengkapnya..</a></p>
+              </div>
+              <div class="section-meta">
+                <a href="">Kegiatan</a>
+                <a href=""><i class="fas fa-user"></i>Admin</a>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="section-thumbnail">
+                <a href=""><img src="{%static 'gambar/gambar2.jpg' %}" alt=""></a>
+                <div class="tanggal">
+                  <span class="tgl">25</span>
+                  <span class="bln">Feb,2020</span>
+                </div>
+              </div>
+              <div class="section-content">
+                <a href=""><h3>Siswa Teladan Berkurban Pada Idul Adha</h3></a>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sapiente labore aut laborum quis mollitia, voluptatum, placeat provident ratione, temporibus est consectetur maiores ipsa autem. Sunt est nobis ratione distinctio minima?<a href="" class="btn btn-primary kecil">Selengkapnya..</a></p>
+              </div>
+              <div class="section-meta">
+                <a href="">Kegiatan</a>
+                <a href=""><i class="fas fa-user"></i>Admin</a>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="section-thumbnail">
+                <a href=""><img src="{%static 'gambar/foto.png' %}" alt=""></a>
+                <div class="tanggal">
+                  <span class="tgl">25</span>
+                  <span class="bln">Feb,2020</span>
+                </div>
+              </div>
+              <div class="section-content">
+                <a href=""><h3>Siswa Teladan Berkurban Pada Idul Adha</h3></a>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sapiente labore aut laborum quis mollitia, voluptatum, placeat provident ratione, temporibus est consectetur maiores ipsa autem. Sunt est nobis ratione distinctio minima?<a href="" class="btn btn-primary kecil">Selengkapnya..</a></p>
+              </div>
+              <div class="section-meta">
+                <a href="">Kegiatan</a>
+                <a href=""><i class="fas fa-user"></i>Admin</a>
+              </div>
+            </div>
+          </div><!-- row -->
+          <div class="row">
+            <div class="col-md-4">
+              <div class="section-thumbnail">
+                <a href=""><img src="{%static 'gambar/renih.png' %}" alt=""></a>
+                <div class="tanggal">
+                  <span class="tgl">25</span>
+                  <span class="bln">Feb,2020</span>
+                </div>
+              </div>
+              <div class="section-content">
+                <a href=""><h3>Siswa Teladan Berkurban Pada Idul Adha</h3></a>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sapiente labore aut laborum quis mollitia, voluptatum, placeat provident ratione, temporibus est consectetur maiores ipsa autem. Sunt est nobis ratione distinctio minima?<a href="" class="btn btn-primary kecil">Selengkapnya..</a></p>
+              </div>
+              <div class="section-meta">
+                <a href="">Kegiatan</a>
+                <a href=""><i class="fas fa-user"></i>Admin</a>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="section-thumbnail">
+                <a href=""><img src="{%static 'gambar/murid-test.jpg' %}" alt=""></a>
+                <div class="tanggal">
+                  <span class="tgl">25</span>
+                  <span class="bln">Feb,2020</span>
+                </div>
+              </div>
+              <div class="section-content">
+                <a href=""><h3>Siswa Teladan Berkurban Pada Idul Adha</h3></a>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sapiente labore aut laborum quis mollitia, voluptatum, placeat provident ratione, temporibus est consectetur maiores ipsa autem. Sunt est nobis ratione distinctio minima?<a href="" class="btn btn-primary kecil">Selengkapnya..</a></p>
+              </div>
+              <div class="section-meta">
+                <a href="">Kegiatan</a>
+                <a href=""><i class="fas fa-user"></i>Admin</a>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="section-thumbnail">
+                <a href=""><img src="{%static 'gambar/visi misi.jpg' %}" alt=""></a>
+                <div class="tanggal">
+                  <span class="tgl">25</span>
+                  <span class="bln">Feb,2020</span>
+                </div>
+              </div>
+              <div class="section-content">
+                <a href=""><h3>Siswa Teladan Berkurban Pada Idul Adha</h3></a>
+                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sapiente labore aut laborum quis mollitia, voluptatum, placeat provident ratione, temporibus est consectetur maiores ipsa autem. Sunt est nobis ratione distinctio minima?<a href="" class="btn btn-primary kecil">Selengkapnya..</a></p>
+              </div>
+              <div class="section-meta">
+                <a href="">Kegiatan</a>
+                <a href=""><i class="fas fa-user"></i>Admin</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tombol-selengkapnya berita">
+          <a href="" class="btn btn-more">Lihat Berita Lainnya</a>
+        </div>
+      </div><!--  container -->
+    </section><!-- section berita -->
+
+    <footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-5">
+              <div class="footer-col">
+                <div class="brand">
+                  <img src="{%static 'gambar/logo-sekolah.png'%}" alt="">
+                  <h1>SMK Merah Putih Bekasi</h1>
+                </div>
+                <p class="tentang">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cum exercitationem totam alias voluptatibus ipsa doloremque earum veritatis, quos qui officia perspiciatis dolore eligendi minus libero suscipit ut aperiam? Itaque, odio!</p>
+              </div>
+              <ul class="sosmed">
+                <li><a href=""><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href=""><i class="fab fa-instagram"></i></a></li>
+              </ul>
+            </div>
+            <div class="col-md-4">
+              <div class="footer-col">
+                <h2>Kontak</h2>
+                <p class="alamat">Jalan Pasar Kecapi No 73. Bekasi Jawa Barat 17414</p>
+                <ul class="ul-alamat">
+                  <li><a href=""><i class="fab fa-whatsapp"></i>0896-5544-2693</a></li>
+                  <li><a href=""><i class="fas fa-envelope"></i>smk.merahputih@gmail.com</a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <div class="footer-col">
+                <h2>Navigasi</h2>
+                <ul class="footer-nav">
+                  <li><a href="">Profil</a></li>
+                  <li><a href="">Visi & Misi</a></li>
+                  <li><a href="">Struktur Organisasi</a></li>
+                  <li><a href="">Sumber Daya Manusia</a></li>
+                  <li><a href="">Pendaftaran</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container text-center">
+              <h6>Hak Cipta Dilindungi. <i class="far fa-copyright"></i> 2019 <a href="">Nabaman </a> </h6>
+            </div>
+          </div>
+        </div> <!--  container -->
+    </footer>
+
+{% endblock content %}

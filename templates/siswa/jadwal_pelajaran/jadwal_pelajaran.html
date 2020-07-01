@@ -1,0 +1,87 @@
+{% extends "dashboard/base.html" %}
+
+{% block  content %}
+
+<div class="row">
+    <div class="col-lg-10">
+        <div class="panel-body">
+        <div class="table-responsive">
+            <table style="width:100%">
+                <tr>
+                    <th>Senin</th>
+                    <th>Selasa</th>
+                    <th>Rabu</th>
+
+                </tr>
+                <tr>
+                    <td>
+                        {% for j in jadwal_senin  %}
+                        {{j.mapel}}<br>
+                        {% endfor  %}
+                    </td>
+                    <td>{% for j in jadwal_selasa  %}
+                        {{j.mapel}}<br>
+                        {% endfor  %}
+                    </td>
+                    <td>{% for j in jadwal_rabu  %}
+                        {{j.mapel}}<br>
+                        {% endfor  %}
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <!-- /.table-responsive -->
+        </div>
+        </div>
+</div>
+<br>
+
+<div class="row">
+    <div class="col-lg-9">
+        <div class="panel-body">
+        <div class="table-responsive">
+            <table style="width:100%">
+                <tr>
+                    <th>Kamis</th>
+                    <th>Jum'at</th>
+                    <th>Sabtu</th>
+
+                </tr>
+                <tr>
+                    <td>
+                        {% for j in jadwal_kamis  %}
+                        {{j.mapel}}<br>
+                        {% endfor  %}
+                    </td>
+                    <td>{% for j in jadwal_jumat  %}
+                        {{j.mapel}}<br>
+                        {% endfor  %}
+                    </td>
+                    <td>{% for j in jadwal_sabtu  %}
+                        {{j.mapel}}<br>
+                        {% endfor  %}
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <!-- /.table-responsive -->
+        </div>
+        </div>
+</div>
+{% endblock content %}
+
+                <tr>
+                    <td>{% for j in jadwal_kamis  %}
+                        {{j.mapel}}<br>
+                        {% endfor  %}
+                    </td>
+                    <td>{% for j in jadwal_jumat  %}
+                        {{j.mapel}}<br>
+                        {% endfor  %}
+                    </td>
+                    <td>{% for j in jadwal_sabtu   %}
+                        {{j.mapel}}<br>
+                        {% endfor  %}
+                    </td>
+                </tr>
+

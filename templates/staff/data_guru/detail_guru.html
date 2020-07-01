@@ -1,0 +1,47 @@
+{% extends "dashboard/base.html" %} {% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="panel panel-info">
+        <div class="panel-heading">
+          <h1 class="page-header">Informasi Guru</h1>
+        </div>
+        <div class="panel-body">
+          <table style="width: 100%;">
+            <tr>
+              <td>Nama</td>
+              <td>: {{guru.nama}}</td>
+            </tr>
+            <tr>
+              <td>NIP</td>
+              <td>: {{guru.nip}}</td>
+            </tr>
+            <tr>
+              <td>Tanggal Lahir</td>
+              <td>: {{guru.tgl_lahir}}</td>
+            </tr>
+            <tr>
+              <td>Alamat</td>
+              <td>: {{guru.alamat}}</td>
+            </tr>
+            <tr>
+              <td>Jenis Kelamin</td>
+              <td>: {{guru.jenis_kelamin}}</td>
+            </tr>
+
+            {% if guru.data_kelas %}
+            <tr>
+              <td>Wali Kelas</td>
+              <td>: {{guru.data_kelas}}</td>
+            </tr>
+            {% endif %}
+          </table>
+        </div>
+        <div class="panel-footer"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

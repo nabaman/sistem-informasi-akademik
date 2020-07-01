@@ -1,0 +1,143 @@
+{% extends "dashboard/base.html" %}
+{% load crispy_forms_tags%}
+
+
+
+{% block  content %}
+<div class="row">
+	<div class="col-lg-11 ">
+		<div class="data_guru">
+				<div class="panel-body">
+					<div class="table-responsive">
+						<form method="get">
+							</div>
+							<div class="row">
+								<div class="form-group col-md-3">
+								{{my_filter.form.nip|as_crispy_field}}
+								</div>
+								<div class="form-group col-md-3">
+									{{my_filter.form.nama|as_crispy_field}}
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group col-md-3">
+									<button type="submit" class="btn btn-info">Cari</button>
+								</div>
+							</div>
+						</form>
+						<table class="table">
+							<thead>
+							<tr>
+								<th>NO</th>
+								<th>NIP</th>
+								<th>NAMA</th>
+								<th>TANGGAL LAHIR</th>
+								<th>JENIS KELAMIN</th>
+								<th>Action</th>
+
+							</tr>
+							</thead>
+							<tbody>
+							{% for gr in guru  %}
+							<tr>
+								<td>{{ forloop.counter0|add:guru.start_index }}</td>
+								<td>{{gr.nip}}</td>
+								<td>{{gr.nama}}</td>
+								<td>{{gr.tgl_lahir}}</td>
+								<td>{{gr.jenis_kelamin}}</td>
+								<td><a href="{% url 'dashboard:detail-guru' gr.id %}" class="btn btn-primary">Detail</a>
+									<a href="{% url 'dashboard:update-guru' gr.id %}" class="btn btn-success">Edit</a>
+									<a href="{% url 'dashboard:hapus-guru' gr.id %}" class="btn btn-danger hapus">Delete</a>
+								</td>
+
+							</tr>
+							{% endfor  %}
+							</tbody>
+						</table>
+						{% if guru.has_other_pages%}
+							<!--Pagination -->
+							{% with request.get_full_path as querystring %}
+							<ul class="pagination">
+	<!--							Previous Page Section-->
+								  {% if guru.has_previous%}
+									  {% if 'nama' or 'nip' in querystring %}
+											{% if 'page in querystring'  %}
+												<li class="page-item">
+												   <li><a href="{{ querystring|slice:':-7' }}&page={{ guru.previous_page_number }}">&laquo;</a></li>
+												</li>
+											{% else %}
+												<li class="page-item">
+												   <li><a href="{{querystring}}&page={{ guru.previous_page_number }}">&laquo;</a></li>
+												</li>
+											{% endif %}
+									  {% else %}
+										<li class="page-item">
+										   <li><a href="?page={{ guru.previous_page_number }}">&laquo;</a></li>
+										</li>
+									  {% endif %}
+
+								  {% else %}
+									<li class="disabled"><span>&laquo;</span></li>
+								  {% endif %}
+
+	<!--							All Page Section-->
+								  {% for i in guru.paginator.page_range  %}
+									{% if 'nama' or 'nip' in querystring%}
+										{% if 'page' in querystring%}
+											{% if guru.number == i  %}
+												<li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+											{% else %}
+												<li><a href="{{ querystring|slice:':-7' }}&page={{ i }}">{{ i }}</a></li>
+											{% endif %}
+										{% else %}
+											{% if guru.number == i  %}
+												<li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+											{% else %}
+												<li><a href="{{ querystring}}&page={{ i }}">{{ i }}</a></li>
+											{% endif %}
+										{% endif %}
+									{% else %}
+										{% if guru.number == i  %}
+											<li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+										{% else %}
+											<li><a href="?page={{ i }}">{{ i }}</a></li>
+										{% endif %}
+									{% endif %}
+								  {% endfor  %}
+
+	<!--							Next Page Section-->
+								  {% if guru.has_next %}
+									{% if 'nama' or 'nip' in querystring %}
+										{% if 'page' in querystring %}
+											<li><a href="{{ querystring|slice:":-7" }}&page={{ guru.next_page_number }}">&raquo;</a></li>
+										{% else %}
+											<li><a href="{{ querystring}}&page={{ guru.next_page_number }}">&raquo;</a></li>
+										{% endif %}
+									{% else %}
+										<li><a href="?page={{ guru.next_page_number }}">&raquo;</a></li>
+									{% endif %}
+								  {% else %}
+									<li class="disabled"><span>&raquo;</span></li>
+								  {% endif %}
+							  </ul>
+							{% endwith %}
+						<!--end Pagination-->
+						{% endif %}
+
+					</div>
+					<!-- /.table-responsive -->
+				</div>
+			</div>
+	</div>
+</div>
+
+{% endblock content %}
+
+{% block  extrajs %}
+<script>
+	$('.hapus').click(function(){
+		return confirm('Apakah Anda Yakin ?');
+	});
+</script>
+
+{% endblock extrajs %}
